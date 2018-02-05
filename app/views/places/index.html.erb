@@ -7,5 +7,6 @@
   </div>
 
   <% end %>
-
-<%= will_paginate @places %>
+<div class="pagination">
+<%= will_paginate @places, renderer: BootstrapPagination::Rails %>
+</div>

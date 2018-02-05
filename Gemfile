@@ -37,6 +37,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'popper_js', '~> 1.12.9'
 gem 'bootstrap', '4.0.0.alpha6'
 gem 'will_paginate', '~> 3.1.0'
+gem 'will_paginate-bootstrap'
+gem 'simple_form'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
