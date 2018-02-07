@@ -15,7 +15,7 @@ class PlacesController < ApplicationController
     if @place.save
       redirect_to @place, notice: 'Place was successfully created.'
     else
-      render :new, status :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -39,7 +39,7 @@ class PlacesController < ApplicationController
     if @place.update_attributes(place_params)
       redirect_to @place, notice: 'Place was successfully updated.'
     else
-      render :edit, status :unprocessable_entity
+      render :edit, status: :unprocessable_entity
     end
   end
 
