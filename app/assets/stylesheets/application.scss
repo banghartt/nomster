@@ -68,11 +68,33 @@ color: #ff3333;
 }
 
 #map {
-        height: 300px;
+        height: 320px;
       }
 
 .clear {
   clear: both
+}
+
+#myModalLabel {
+  font-weight: bold
+}
+
+.modal-body {
+  align-content: right;
+}
+
+
+.message {
+  margin-top: 20px;
+  align-content: center;
+  font-weight: bold;
+
+}
+
+.rating {
+  margin-bottom: 20px;
+  align-content: center;
+  font-weight: bold;
 }
 
 blockquote {

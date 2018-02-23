@@ -1,50 +1,53 @@
 <div class="booyah-box col-10 offset-1">
     <h1><%= @place.name %></h1>
-    <i><%= @place.address %></i>
-    <br/><br/>
-    <p><%= @place.description %></p>
+      <i><%= @place.address %></i>
+        <br/><br/>
+        <div>
 
+        </div>
+      <p><%= @place.description %></p>
 <% if @place.latitude.present? && @place.longitude.present? %>
-
     <script>
-
       function initMap() {
         var myLatLng = {lat: <%= @place.latitude %>, lng: <%= @place.longitude %>};
-
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 12,
           center: myLatLng
         });
-
         var marker = new google.maps.Marker({
           position: myLatLng,
           map: map,
           title: 'Hello World!'
-        });
-      }
+              }
   </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCozdHG5l-UXUZ-Qj4sZthvTAFTxXuXx5E&callback=initMap">
 </script>
 <div id="map"></div>
 <% end %>
-
-
-<br />
-
 <div class="float-right">
-      <br />
-    <% if current_user && current_user == @place.user %>
-  <%= link_to 'Edit', edit_place_path(@place), class: 'btn btn=primary' %>
-  <%= link_to 'Delete', place_path(@place), method: :delete, data: {confirm: 'Are you sure want to delete this?'}, class: 'btn btn-danger' %>
-   <% end %>
+          <% if current_user && current_user == @place.user %>
+          <%= link_to 'Edit', edit_place_path(@place), class: 'btn btn-primary' %>
+          <%= link_to 'Delete', place_path(@place), method: :delete, data: {confirm: 'Are you sure want to delete this?'}, class: 'btn btn-danger' %>
+        <% end %>
+  </div>
+<br />
+<div class="float-left">
+<%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
+  <%= f.input :caption %>
+  <%= f.submit "Add a Photo", class: 'btn btn-primary' %>
+<% end %>
 </div>
+<% @place.photos.each do |photo| %>
+  <div>
+    <blockquote>
+      <b><%= photo.caption %></b> -
+    </blockquote>
+  </div>
+<% end %>
+This
 </div>
 
-
-
-<div class="clear"></div>
-
-
+  <div class="clear"></div>
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -57,9 +60,11 @@
         <h4 class="modal-title" id="myModalLabel">Add a comment</h4>
       </div>
       <div class="modal-body">
-      <%= simple_form_for @comment, url: place_comments_path(@place) do |f| %>
-  <%= f.input :message %>
-  <%= f.input :rating, as: :select, collection: Comment::RATINGS %>
+        <%= simple_form_for @comment, url: place_comments_path(@place) do |f| %>
+        <div>
+           <%= f.input :message, label_html: { class: 'message' } %>
+            <%= f.input :rating, label_html: {class: 'rating'}, as: :select, collection: Comment::RATINGS %>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -70,14 +75,16 @@
   </div>
 </div>
 
-<div class= col-10 offset-1 >
+<div>
   <h1 class="float-left">Comments</h1>
 </div>
    <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg float-right" data-toggle="modal" data-target="#myModal">
+<button type="button" id= "modal-button" class="btn btn-primary btn-lg float-right" data-toggle="modal" data-target="#myModal">
   Add a comment
 </button>
 </div>
+
+
 
 
 <div class="clear"></div>
@@ -95,6 +102,7 @@
     </div>
     <% end %>
   </div>
+
 
 
   
