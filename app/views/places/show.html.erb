@@ -33,16 +33,14 @@
 <br />
 <div class="float-left">
 <%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
+  <%= f.input :picture %>
   <%= f.input :caption %>
   <%= f.submit "Add a Photo", class: 'btn btn-primary' %>
 <% end %>
 </div>
 <% @place.photos.each do |photo| %>
-  <div>
-    <blockquote>
-      <b><%= photo.caption %></b> -
-    </blockquote>
-  </div>
+  <%= image_tag photo.picture %>
+  <%= photo.caption %></b> -
 <% end %>
 This
 </div>
