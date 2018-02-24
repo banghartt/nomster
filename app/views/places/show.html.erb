@@ -2,28 +2,46 @@
     <h1><%= @place.name %></h1>
       <i><%= @place.address %></i>
         <br/><br/>
-        <div>
-
-        </div>
       <p><%= @place.description %></p>
+
+
 <% if @place.latitude.present? && @place.longitude.present? %>
-    <script>
-      function initMap() {
-        var myLatLng = {lat: <%= @place.latitude %>, lng: <%= @place.longitude %>};
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 12,
-          center: myLatLng
-        });
-        var marker = new google.maps.Marker({
-          position: myLatLng,
-          map: map,
-          title: 'Hello World!'
-              }
+
+  <script>
+
+    function initMap() {
+      var myLatLng = {lat: <%= @place.latitude %>, lng: <%= @place.longitude %>};
+
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 12,
+        center: myLatLng
+      });
+
+      var marker = new google.maps.Marker({
+        position: myLatLng,
+        map: map,
+        title: 'Hello World!'
+      });
+    }
+
   </script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCozdHG5l-UXUZ-Qj4sZthvTAFTxXuXx5E&callback=initMap">
-</script>
-<div id="map"></div>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD30pjHy2CqUU5hOuJiu0l5Y2rbXjzjUNQ&callback=initMap">
+  </script>
+
+  <div id="map"></div>
 <% end %>
+</div>
+
+<!-- Photo list -->
+ <% @place.photos.each do |photo| %>
+<div class="col-12 col-sm-6">
+  <%= image_tag photo.picture %>
+  <%= @photo.caption %>
+<% end %>
+</div>
+
+<!-- Edit place buttons -->
+
 <div class="float-right">
           <% if current_user && current_user == @place.user %>
           <%= link_to 'Edit', edit_place_path(@place), class: 'btn btn-primary' %>
@@ -31,6 +49,8 @@
         <% end %>
   </div>
 <br />
+
+<!-- Photos form -->
 <div class="float-left">
 <%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
   <%= f.input :picture %>
@@ -38,14 +58,8 @@
   <%= f.submit "Add a Photo", class: 'btn btn-primary' %>
 <% end %>
 </div>
-<% @place.photos.each do |photo| %>
-  <%= image_tag photo.picture %>
-  <%= photo.caption %></b> -
-<% end %>
-This
-</div>
 
-  <div class="clear"></div>
+<div class="clear"></div>
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
