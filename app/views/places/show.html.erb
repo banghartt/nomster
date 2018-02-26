@@ -31,17 +31,21 @@
 
   <div id="map"></div>
 <% end %>
-</div>
+<br />
 
-<div class="booyah-box col-10 offset-1">
-  
-<!-- Photo list -->
-  <% @place.photos.each do |photo| %>
-  <div class="container" id="photo_list">
-  <%= image_tag photo.picture %>
-  <%= @photo.caption %>
+
+ <h1>Photos</h1>
+ <hr>
+  <div class="col-10 offset-1">
+      <% @place.photos.each do |photo| %>
+      <div>
+      <%= image_tag photo.picture %>
+      <div class="clear"></div>
+      <%= photo.caption %>
+    </div>
+  <% end %>
+  </div>
 </div>
-<% end %>
 </div>
 
 <!-- Edit place buttons -->
