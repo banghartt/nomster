@@ -36,9 +36,9 @@
 
  <h1>Photos</h1>
  <hr>
-  <div class="col-10 offset-1">
+  <div class="col-11 offset-1">
       <% @place.photos.each do |photo| %>
-      <div>
+      <div id="photos">
       <%= image_tag photo.picture %>
       <div class="clear"></div>
       <%= photo.caption %>

@@ -17,9 +17,13 @@
 @import url('https://fonts.googleapis.com/css?family=Ovo');
 @import "font-awesome";
 
-img {
-  max-width:100%;
- 
+#photos img { 
+  /*display: block;*/
+  max-width:800px;
+  max-height:1000px;
+  width: auto;
+  height: auto;
+
 }
 
 
