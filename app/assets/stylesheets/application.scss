@@ -17,6 +17,19 @@
 @import url('https://fonts.googleapis.com/css?family=Ovo');
 @import "font-awesome";
 
+.carousel-item.active,
+.carousel-item-next,
+.carousel-item-prev {
+  display: block;
+}
+
+img {
+  width: auto;
+  height: auto;
+  margin: left;
+  border-radius: 8px;
+}
+
 #photos {
   width: 400px;
   height: auto;
