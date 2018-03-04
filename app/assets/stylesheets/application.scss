@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
+ 
 @import "bootstrap";
 @import url('https://fonts.googleapis.com/css?family=Ovo');
 @import "font-awesome";
@@ -21,6 +22,16 @@
 .carousel-item-next,
 .carousel-item-prev {
   display: block;
+}
+
+.carousel {
+  box-shadow: 0px 3px 8px #2a2a2a;
+}
+
+.carousel-inner > .carousel-item > img, 
+.carousel-inner > .carousel-item > a > img {
+  height: 550px;
+  width: 100%;
 }
 
 img {
@@ -54,6 +65,18 @@ body {
 
 
 }
+
+.carousel-caption {
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
+  font-size: 60px;
+  font-weight: 100;
+  text-shadow: rgba(0, 0, 0, 0.95) 2px 2px;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  position: absolute;
+  left: 0;
+}
+
 .booyah-box {
   -moz-box-shadow: 1px 1px 2px 0 #d0d0d0;
   -webkit-box-shadow: 1px 1px 2px 0 #d0d0d0;
@@ -69,6 +92,7 @@ body {
 .navbar {
   background-image: image_url('footer_lodyas.png');
   box-shadow: 5px 5px 5px grey;
+  margin-bottom: 0;
 
 }
 
@@ -76,6 +100,7 @@ body {
   color: #E3E85A;
   font-family: 'Ovo', serif;
   font-size: 26px;
+  margin-bottom: 0;
 }
 
 .pagination {
